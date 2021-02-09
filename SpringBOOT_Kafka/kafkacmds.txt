@@ -1,0 +1,41 @@
+
+REST End Points:
+-----------------
+http://localhost:4343/kafka/sendMessage?publish=A first message from spring-kafka
+http://localhost:4343/kafka/sendMessage?publish=A Second message from spring-kafka
+http://localhost:4343/kafka/receiveMessage
+	A Second message from spring-kafka
+
+Console Producer :Produce messages for a particular topic
+
+Console Consumer :Can Consume message from a particular topic 
+
+Topic has partions .
+
+Topic creation: Topic has partions.
+
+Start servers:
+zookeeper : start      : Goto <KAFKA_HOME>   .\bin\windows\zookeeper-server-start.bat  .\config\zookeeper.properties
+Kafka Server or Topic  : Goto <KAFKA_HOME> = .\bin\windows\kafka-server-start.bat .\config\server.properties
+
+Topic creation: <KAFKA_HOME>.\bin\windows\kafka-topics.bat --create --topic sample --zookeeper localhost:2181 --partitions 1 --replication-factor 1
+
+Producer console: Goto <KAFKA_HOME> = .\bin\windows\kafka-console-producer.bat --topic sample --broker-list localhost:9092
+Consumer console: Goto <KAFKA_HOME> = .\bin\windows\kafka-console-consumer.bat --topic sample --bootstrap-server localhost:9092
+		  // receive messages from the begginning of messages will receive
+		  Goto <KAFKA_HOME> = .\bin\windows\kafka-console-consumer.bat --topic sample --bootstrap-server localhost:9092 --from-beginning
+
+//offset number consume the messages
+Goto <KAFKA_HOME> = .\bin\windows\kafka-console-consumer.bat --topic sample --bootstrap-server localhost:9092 --offset '2'
+
+// earliest
+Goto <KAFKA_HOME> = .\bin\windows\kafka-console-consumer.bat --topic sample --bootstrap-server localhost:9092 --earliest
+
+//describe Topic
+<KAFKA_HOME>.\bin\windows\kafka-topics.bat --describe --topic <topicname> --zookeeper localhost:2181
+
+// describe topic cmd
+<KAFKA_HOME>.\bin\windows\kafka-topics.bat --describe --topic sample --zookeeper localhost:2181
+
+// Delete Topic cmd
+<KAFKA_HOME>.\bin\windows\kafka-run-class.bat kafka..admin.TopicCommand --delete --topic sample -zookeeper localhost:2181

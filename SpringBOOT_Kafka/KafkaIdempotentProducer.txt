@@ -1,0 +1,16 @@
+enable.idempotence=true
+------------------------
+producer configuration enable.idempotence=true
+
+When enable.idempotence is set to true, no manual retries are required, in fact performing retries in your application code will still cause duplicates. Leave the retries to your client library, it is totally transparent to you as a developer.
+
+acks=all
+---------
+If you already use acks=all then there is no reason not to enable this feature. It works flawlessly and without an additional complexity for the application developer. It is just a no-brainer decision.
+
+
+Resources :
+------------
+https://www.cloudkarafka.com/blog/2019-04-10-apache-kafka-idempotent-producer-avoiding-message-duplication.html
+
+https://kafka-tutorials.confluent.io/creating-first-apache-kafka-producer-application/kafka.html
